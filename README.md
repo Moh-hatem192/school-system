@@ -1,0 +1,1 @@
+This project is a school system that help students and their teachers
