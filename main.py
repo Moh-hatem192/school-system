@@ -65,5 +65,30 @@ class Teacher:
                     teacher.get('name'),
                     teacher.get('name')
                 ) 
-                        
-osama = Teacher('ali',13,45,'asw','ahh',12)
+
+    def calculate_gross_salary(self):
+        return self.hourly_rate * self.hours_worked
+
+    def calculate_net_salary(self):
+        gross_salary = self.calculate_gross_salary()
+        net_salary = Finance.calculate_net_salary(gross_salary)
+        return net_salary
+
+class Finance:
+    INSURANCE = 100
+    HIGH_RATE = 0.2
+    LOW_RATE = 0.12
+    RETIRMENT = 50
+
+    @staticmethod 
+    def calculate_net_salary(salary):
+        if salary >= 1200:
+            deductions = Finance.INSURANCE + (Finance.HIGH_RATE*salary) + Finance.RETIRMENT
+            net_salary = salary = deductions
+        else:
+            deductions = Finance.INSURANCE + (Finance.LOW_RATE*salary) + Finance.RETIRMENT
+            net_salary = salary = deductions    
+        return net_salary    
+    
+
+osama = Teacher('ali',13,45,'asw',10,200)
